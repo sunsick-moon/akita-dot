@@ -18,7 +18,7 @@ paquetes() {
     
         
     for pkg in "${pkgs[@]}"; do
-        if  pacman -S --noconfirm --needed -- "${pkg}"; then
+        if  pacman -S --noconfirm --needed "${pkg}"; then
             echo "Instalación exitosa: $pkg"
         else
             echo "Falló el paquete $pkg, omitiendo y continuando..."
@@ -28,7 +28,7 @@ paquetes() {
     
     echo "Instalando paquetes de aur..."
     for pkg in "${paru_pkgs[@]}"; do
-        if paru -S --noconfirm --needed -- "${pkg}"; then
+        if sudo -u "$SUDO_USER" env HOME="/home/$SUDO_USER" paru -S --noconfirm "${pkg}"; then
             echo "Instalación exitosa: $pkg"
         else
             echo "Falló el paquete $pkg, omitiendo y continuando..."
