@@ -19,6 +19,7 @@ for folder in "${f_names[@]}"; do
         echo "Fallo al instalar $folder"
     fi
 done
+cp -a config/wallpaper.png "$HOME/.config/"
 }
 
 #Config commands
