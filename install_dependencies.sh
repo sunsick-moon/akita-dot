@@ -7,7 +7,11 @@ fi
 
 paquetes() {
     local pkgs=(
-        kate ark zed python-pywal hyprpaper waypaper brave-bin waybar wofi xdg-desktop-portal-gtk nemo nemo-fileroller gvfs tumbler ffmpegthumbnailer grim slurp wl-clipboard networkmanager network-manager-applet dolphin adwaita-dark adw-gtk-theme adwaita-icon-theme wlogout hyprlock breeze inter-font qt6ct qt5ct breeze-icons qt5-wayland qt6-wayland mako realtime-privileges libva-utils
+        kate ark zed hyprpaper waypaper brave-bin waybar wofi xdg-desktop-portal-gtk nemo nemo-fileroller gvfs tumbler ffmpegthumbnailer grim slurp wl-clipboard networkmanager network-manager-applet dolphin adw-gtk-theme adwaita-icon-theme wlogout hyprlock breeze inter-font qt6ct qt5ct breeze-icons qt5-wayland qt6-wayland mako realtime-privileges libva-utils
+    )
+    
+    local paru_pkgs=(
+        python-pywal16
     )
 
     local failed=()
@@ -15,6 +19,16 @@ paquetes() {
         
     for pkg in "${pkgs[@]}"; do
         if  pacman -S --noconfirm --needed -- "${pkg}"; then
+            echo "Instalación exitosa: $pkg"
+        else
+            echo "Falló el paquete $pkg, omitiendo y continuando..."
+            failed+=("$pkg")
+        fi
+    done
+    
+    echo "Instalando paquetes de aur..."
+    for pkg in "${paru_pkgs[@]}"; do
+        if paru -S --noconfirm --needed -- "${pkg}"; then
             echo "Instalación exitosa: $pkg"
         else
             echo "Falló el paquete $pkg, omitiendo y continuando..."
