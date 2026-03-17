@@ -1,0 +1,51 @@
+{
+"battery": {
+    "format": "{icon}   {capacity}% ",
+    "format-icons": ["", "", "", "", ""]
+},
+"clock": {
+    "format": "{:%b %d %H:%M}"
+},
+"cpu": {
+    "interval": 1,
+    "format": " \uf2db  {load}% ",
+    "max-length": 10
+},
+"memory" : {
+      "interval": 30,
+      "format": "\uefc5    {used:0.1f}G",
+      "max-length": 10
+},
+"network": {
+    "interval": 1,
+    "on-click": "nm-connection-editor",
+    "format-wifi": "{essid} {icon}",
+    "format-ethernet": "{ifname} ",
+    "format-disconnected": "Desconectado ",
+    "format-icons": [
+        "󰤟", // Icono para señal baja (0-25%)
+        "󰤢", // Icono para señal media-baja (26-50%)
+        "󰤥", // Icono para señal media-alta (51-75%)
+        "󰤨"  // Icono para señal alta (76-100%)
+    ]
+}
+,
+"hyprland/workspaces": {
+    "persistent-workspaces": {
+             "*": 9
+       }
+    },
+
+"tray" : {
+    "spacing" : 6,
+    "icon-size": 18
+      },
+  
+"custom/power": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "sh -c 'wlogout $WLOGOUT_FLAGS'"
+
+}
+
+}

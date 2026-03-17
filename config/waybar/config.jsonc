@@ -1,0 +1,10 @@
+{
+  "include": ["~/.config/waybar/modules.jsonc"],
+  "layer": "top",
+  "margin": "4px 1px 0px 1px",
+  "reload_style_on_change": true,
+  "fixed-center": true,
+  "modules-left": ["clock", "cpu", "memory"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["network", "battery", "tray", "custom/power"]
+}

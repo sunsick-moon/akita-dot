@@ -1,0 +1,40 @@
+window {{
+    background-color: transparent;
+    border: 0px;
+    margin: 0px;
+    color: white;
+    animation: slideIn 0.5s ease-in-out both;
+}}
+
+#input {{
+    color: {background};
+    border-radius: 6px;
+    border: 2px solid {color12};
+    background-color: {color7};
+    margin-bottom: 15px;
+    
+}}
+
+#inner-box {{
+}}
+
+#outer-box {{
+    padding: 15px 10px;
+    border-radius: 6px;
+    border: 2px solid {color12};
+    background-color: {color0};
+        
+}}
+
+#entry {{
+    color: {foreground};
+    border-radius: 6px;
+    padding: 8px 4px;
+}}
+
+#entry:selected {{
+    background-color: {color12};
+    color: {background};
+    border-radius: 6px;
+    padding: 8px 4px;
+}}

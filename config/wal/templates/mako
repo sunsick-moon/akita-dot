@@ -1,0 +1,17 @@
+font=Inter 11
+
+background-color={background}
+text-color={foreground}
+border-color={color4}
+progress-color=over {color4}
+
+border-size=2
+border-radius=8
+padding=10
+margin=10
+
+default-timeout=5000
+
+# Opcional: posición y layout
+anchor=top-right
+max-visible=4

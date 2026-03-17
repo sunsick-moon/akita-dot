@@ -1,0 +1,62 @@
+@import "../../.cache/wal/colors-waybar.css";
+
+* {
+    background-image: none;
+    box-shadow: none;
+}
+
+window {
+    background-color: transparent;
+}
+
+button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+    color: white;
+    border-radius: 6px;
+    outline: none;
+    margin: 10px;
+    border: 2px solid @color12;
+    font-size: 16px;
+
+    padding: 60px 20px 20px 20px;
+}
+
+button:hover {
+    background-color: alpha(@color9, 0.8);
+    outline-style: none;
+}
+
+#logout,
+#suspend,
+#shutdown,
+#reboot {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 72px 72px;
+}
+
+#lock {
+    background-image: url("icons/lock.png");
+}
+
+#logout {
+    background-image: url("icons/logout.png");
+}
+
+#suspend {
+    background-image: url("icons/suspend.png");
+}
+
+#hibernate {
+    background-image: url("icons/hibernate.png");
+}
+
+#reboot {
+    background-image: url("icons/reboot.png");
+}
+
+#shutdown {
+    background-image: url("icons/shutdown.png");
+}
