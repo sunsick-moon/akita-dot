@@ -24,7 +24,7 @@ cp -a config/wallpaper.png "$HOME/.config/"
 
 #Config commands
 copy_folders
-wal -i $HOME/.config/wallpaper.jpg
+wal -i "$HOME/.config/wallpaper.png"
 hyprctl hyprpaper preload "~.config/wallpaper.png" && hyprctl hyprpaper wallpaper ",$HOME/.config/wallpaper.png"
 chmod +x "$HOME/.config/scripts/lock.sh"
 chmod +x "$HOME/.config/scripts/wal-hook.sh"
