@@ -3,7 +3,7 @@
 
 copy_folders() {
     local f_names=(
-        wal kitty fastfetch waybar wlogout wofi gtk-3.0 gtk-4.0 scripts waypaper hypr
+        fastfetch gtk-3.0 gtk-4.0 hypr kitty mako scripts uwsm wal waybar waypaper wlogout wofi
     )
 
 local failed=()
