@@ -1,0 +1,17 @@
+font=Inter 11
+
+background-color={{ colors.surface.default.hex }}
+text-color={{ colors.on_surface.default.hex }}
+border-color={{ colors.primary.default.hex }}
+progress-color=over {{ colors.primary.default.hex }}
+
+border-size=2
+border-radius=8
+padding=10
+margin=10
+
+default-timeout=5000
+
+# Opcional: posición y layout
+anchor=top-right
+max-visible=4

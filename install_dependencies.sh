@@ -7,11 +7,7 @@ fi
 
 paquetes() {
     local pkgs=(
-        kate ark zed hyprpaper waypaper brave-bin waybar wofi xdg-desktop-portal-gtk nemo nemo-fileroller gvfs tumbler ffmpegthumbnailer grim slurp wl-clipboard networkmanager network-manager-applet dolphin adw-gtk-theme adwaita-icon-theme wlogout hyprlock breeze inter-font qt6ct qt5ct breeze-icons qt5-wayland qt6-wayland mako realtime-privileges libva-utils
-    )
-    
-    local paru_pkgs=(
-        python-pywal16
+        ark dolphin hyprpaper waypaper waybar wofi inter-font mako uwsm superfile neovim ttf-jetbrains-mono-nerd libappindicator matugen dos2unix
     )
 
     local failed=()
@@ -25,20 +21,12 @@ paquetes() {
             failed+=("$pkg")
         fi
     done
-    
-    echo "Instalando paquetes de aur..."
-    for pkg in "${paru_pkgs[@]}"; do
-        if sudo -u "$SUDO_USER" env HOME="/home/$SUDO_USER" paru -S --noconfirm "${pkg}"; then
-            echo "Instalación exitosa: $pkg"
-        else
-            echo "Falló el paquete $pkg, omitiendo y continuando..."
-            failed+=("$pkg")
-        fi
-    done
+    git clone https://github.com/LazyVim/starter ~/.config/nvim
+    rm -rf ~/.config/nvim/.git
 
     if ((${#failed[@]})); then
         echo
-        echo "Paquetes que fallaron:"
+        echo "Paquetes que fallaron:" 
         printf ' - %s\n' "${failed[@]}"
     else
         echo "Todos los paquetes se instalaron correctamente."

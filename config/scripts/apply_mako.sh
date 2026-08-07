@@ -1,19 +1,24 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-WAL_OUT="$HOME/.cache/wal/mako"
+# Archivo generado por la plantilla de Matugen
+MATUGEN_OUT="$HOME/.config/matugen/generated/mako"
 
-# Archivo real que usa mako normalmente
+# Archivo real de configuración de Mako
 MAKO_CFG="$HOME/.config/mako/config"
 
 mkdir -p "$(dirname "$MAKO_CFG")"
 
-if [[ ! -f "$WAL_OUT" ]]; then
-  echo "No existe $WAL_OUT. Ejecuta 'wal -i ...' primero para generar el template."
+if [[ ! -f "$MATUGEN_OUT" ]]; then
+  echo "No existe $MATUGEN_OUT. Ejecuta 'matugen image ...' primero para generar el template."
   exit 1
 fi
 
-cp -f "$WAL_OUT" "$MAKO_CFG"
+cp -f "$MATUGEN_OUT" "$MAKO_CFG"
 
-# Recarga sin reiniciar
-pkill -USR1 mako || true
+# Recarga la configuración de Mako al vuelo
+if command -v makoctl &> /dev/null; then
+  makoctl reload
+else
+  pkill -USR1 mako || true
+fi

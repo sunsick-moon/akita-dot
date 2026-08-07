@@ -1,0 +1,44 @@
+// Zed settings
+{
+  "cli_default_open_behavior": "existing_window",
+  "ui_font_family": ".ZedSans",
+  "buffer_font_family": "Cascadia Code PL",
+  "terminal": {
+    "dock": "bottom",
+  },
+  "collaboration_panel": {
+    "button": false,
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "unnecessary_code_fade": 0.2,
+  "redact_private_values": true,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+    "anthropic_retention": false,
+  },
+  "icon_theme": "Material Icon Theme",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "dark",
+    "light": "Gruvbox Light",
+    "dark": "Catppuccin Macchiato (Blur)",
+  },
+  "current_line_highlight": "all",
+  "autosave": { "after_delay": { "milliseconds": 500 } },
+  "disable_ai": false,
+  "soft_wrap": "editor_width",
+  "project_panel": {
+    "dock": "right",
+  },
+  "minimap": {
+    "show": "never",
+  },
+  "rounded_selection": true,
+  "tabs": {
+    "file_icons": true,
+  },
+}

@@ -1,9 +1,9 @@
-@import "../../.cache/wal/colors-waybar.css";
+/* Importación de colores dinámicos de Pywal */
+/*@import "../../.cache/wal/colors-waybar.css"; */
 
+/* --- RESET Y FUENTES GLOBALES --- */
 * {
-    font-family:
-        "Inter", "JetBrainsMono Nerd Font", FontAwesome, Roboto,
-        Helvetica, Arial, sans-serif;
+    font-family: "JetBrainsMono Nerd Font", "Inter", FontAwesome, sans-serif;
     border: none;
     border-radius: 0px;
     color: @foreground;
@@ -11,46 +11,63 @@
     font-weight: 500;
 }
 
-window#waybar{
+/* Fondo de la barra principal transparente para permitir Blur de Hyprland */
+window#waybar {
     background-color: transparent;
 }
 
-#workspaces{
-    min-height: 10px;
-    border-radius: 50px;
-    padding: 0px;
-    background-color: @background;
-    color: @foreground;
+/* --- MÓDULO DE WORKSPACES --- */
+#workspaces {
+    background-color: alpha(@background, 0.75);
     border: 2px solid alpha(@color1, 0.6);
-    
+    border-radius: 50px;
+    padding: 2px 4px;
+    margin: 2px 4px;
 }
 
-#workspaces button{
-    border-radius: 6px;
+/* Limpieza de botones GTK dentro de Workspaces */
+#workspaces button {
+    padding: 0px 8px;
     color: @foreground;
-    
+    background: transparent;
+    border-radius: 50px;
+    box-shadow: none;
+    text-shadow: none;
+    transition: all 0.2s ease-in-out;
 }
 
+/* Workspace activo */
 #workspaces button.active {
-    color: @foreground;
-    background: alpha(@color1, 0.6) ;
-    min-width: 16px;
-    border-radius: 50px;
-    transition: all 0.3s ease-in-out;
+    color: @background; /* Cambia a color oscuro/fondo para dar contraste con color1 */
+    background: @color1;
+    min-width: 18px;
 }
 
+/* Hover sobre workspaces */
 #workspaces button:hover {
-    background-color: @color5;
+    background-color: alpha(@color5, 0.8);
     color: @foreground;
-    border-radius: 50px;
-    border: none;
 }
 
-#clock, #cpu, #battery, #tray, #memory, #network, #custom-power{
-    background-color: @background;
-    color:@foreground;
+/* --- MÓDULOS INDIVIDUALES (PÍLDORAS) --- */
+#clock,
+#cpu,
+#memory,
+#network,
+#battery,
+#tray,
+#custom-power {
+    background-color: alpha(@background, 0.75); /* Fondo semi-transparente para Blur */
+    color: @foreground;
     padding: 0px 14px;
     border-radius: 50px;
-    margin: 0 5px;
+    margin: 2px 4px;
     border: 2px solid alpha(@color1, 0.6);
+}
+
+/* Espaciado interno para iconos del sistema en el Tray */
+#tray > .passive,
+#tray > .active,
+#tray > .needs-attention {
+    padding: 0px 4px;
 }

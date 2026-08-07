@@ -1,0 +1,28 @@
+[config]
+set_wallpaper = false
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty.conf'
+output_path = '~/.config/kitty/kitty.conf'
+
+[templates.mako]
+input_path = '~/.config/matugen/templates/mako'
+output_path = '~/.config/matugen/generated/mako'
+
+[templates.wofi]
+input_path = '~/.config/matugen/templates/wofi.css'
+output_path = '~/.config/wofi/style.css'
+
+[templates.luacolors]
+input_path = '~/.config/matugen/templates/colors.lua'
+output_path = '~/.config/hypr/colors.lua'
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/waybar-colors.css'
+output_path = '~/.config/matugen/generated/waybar-colors.css'
+
+[templates.custom_css]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/matugen/generated/colors.css'
+
+post_hook = 'hyprctl reload'

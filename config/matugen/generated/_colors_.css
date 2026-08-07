@@ -1,0 +1,21 @@
+/* Variables CSS estándar */
+:root {
+  --primary: #a8c8ff;
+  --on-primary: #05305f;
+  --primary-container: #254777;
+
+  --secondary: #bdc7dc;
+  --tertiary: #dbbce1;
+
+  --background: #111318;
+  --surface: #111318;
+  --surface-variant: #43474e;
+  --on-surface: #e1e2e9;
+
+  --error: #ffb4ab;
+}
+
+/* Si usas GTK3/4 (Waybar, Rofi/Ags, etc.), también puedes definir: */
+@define-color primary #a8c8ff;
+@define-color surface #111318;
+@define-color on_surface #e1e2e9;

@@ -1,2 +1,22 @@
-style=~/.cache/wal/wofi.css
-show-icons=true
+# --- Modo y Comportamiento Principal ---
+mode=drun
+prompt=Buscar...
+term=kitty
+
+# --- Íconos ---
+allow-images=true
+image-size=24
+
+# --- Búsqueda y Ordenamiento ---
+matching=contains
+insensitive=true
+
+# --- Geometría y Posición ---
+width=50%
+height=50%
+location=top
+
+# --- Comportamiento Visual / Sway & Hyprland ---
+layer=top
+hide_scroll=true
+no_actions=true
