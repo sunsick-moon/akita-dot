@@ -21,8 +21,12 @@ output_path = '~/.config/hypr/colors.lua'
 input_path = '~/.config/matugen/templates/waybar-colors.css'
 output_path = '~/.config/matugen/generated/waybar-colors.css'
 
+[templates.superfile]
+input_path = '~/.config/matugen/templates/spf_matugen.toml'
+output_path = '~/.config/superfile/theme/spf_matugen.toml'
+
 [templates.custom_css]
 input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.config/matugen/generated/colors.css'
 
-post_hook = 'hyprctl reload'
+post_hook = 'hyprctl reload && killall -SIGUSR2 waybar'

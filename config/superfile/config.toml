@@ -95,7 +95,7 @@ file_panel_name_percent = 50
 
 #-- Theme
 # Put your theme's name here!
-theme = "catppuccin-mocha"
+theme = "spf_matugen"
 
 #-- Code Previewer
 # Whether to use the builtin syntax highlighting with chroma or use bat. Values: "" for builtin chroma, "bat" for bat
@@ -113,7 +113,7 @@ show_select_icons = true
 #-- Transparent Background Support
 # Set to true to enable background transparency.
 # Requires: terminal support for colour transparency
-transparent_background = false
+transparent_background = true
 
 #-- File Preview Panel Width
 # Width of the file preview panel will be 1/n of the total width.
