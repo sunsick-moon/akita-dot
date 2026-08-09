@@ -1,6 +1,6 @@
 {
   "layer": "top",
-  "margin": "4px 1px 0px 1px",
+  "margin": "2px 2px 0px 2px",
   "reload_style_on_change": true,
   "fixed-center": true,
 
@@ -14,6 +14,7 @@
     "hyprland/workspaces"
   ],
   "modules-right": [
+    "custom/scroll-windows-indicator",
     "network",
     "battery",
     "tray",
@@ -39,11 +40,17 @@
   // --- MÓDULOS CENTRO ---
   "hyprland/workspaces": {
     "persistent-workspaces": {
-      "*": 5
+      "*" :5
     }
   },
 
   // --- MÓDULOS DERECHA ---
+  "custom/scroll-windows-indicator": {
+      "exec": "~/.config/waybar/getWindows.sh",
+      "return-type": "string",
+      "format": "{}",
+      "interval": 1
+  },
   "network": {
     "interval": 1,
     "on-click": "nm-connection-editor",

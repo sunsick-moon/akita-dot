@@ -7,7 +7,7 @@ fi
 
 paquetes() {
     local pkgs=(
-        ark dolphin hyprpaper waypaper waybar wofi inter-font mako uwsm superfile neovim ttf-jetbrains-mono-nerd libappindicator matugen dos2unix
+        ark dolphin hyprpaper waypaper waybar wofi inter-font mako uwsm superfile neovim ttf-jetbrains-mono-nerd libappindicator matugen dos2unix jq
     )
 
     local failed=()

@@ -12,6 +12,15 @@ hl.bind(Main .. " + backspace",
 hl.bind(Main .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(Main .. " + P", hl.dsp.window.pseudo())
 
+-- Scrolling layout controls
+hl.bind(Main .. " + mouse_down", hl.dsp.focus({ direction = "left" }))
+hl.bind(Main .. " + mouse_up", hl.dsp.focus({ direction = "right" }))
+hl.bind(Main .. " + up", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(Main .. " + down", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(Main .. " + comma", hl.dsp.layout("swapcol l"))
+hl.bind(Main .. " + period", hl.dsp.layout("swapcol r"))
+
+
 -- Workspaces enumeration
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
@@ -22,8 +31,8 @@ end
 -- Move focus with mainMod + arrow keys
 hl.bind(Main .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(Main .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(Main .. " + up", hl.dsp.focus({ direction = "up" }))
-hl.bind(Main .. " + down", hl.dsp.focus({ direction = "down" }))
+-- hl.bind(Main .. " + up", hl.dsp.focus({ direction = "up" }))
+-- hl.bind(Main .. " + down", hl.dsp.focus({ direction = "down" }))
 
 --###### And the rest or whatever #####--
 -- Example special workspace (scratchpad)
@@ -31,8 +40,8 @@ hl.bind(Main .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(Main .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
-hl.bind(Main .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(Main .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+-- hl.bind(Main .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+-- hl.bind(Main .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(Main .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
