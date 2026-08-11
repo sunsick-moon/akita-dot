@@ -11,3 +11,4 @@ source /usr/share/cachyos-fish-config/cachyos-config.fish
 #end
 
 abbr -a hval "hyprctl eval ''"
+abbr -a matu-nmtui "NEWT_COLORS=(string join ' ' (cat ~/.config/nmtui/palette)) nmtui"

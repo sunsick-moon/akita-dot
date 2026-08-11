@@ -25,6 +25,10 @@ output_path = '~/.config/matugen/generated/waybar-colors.css'
 input_path = '~/.config/matugen/templates/spf_matugen.toml'
 output_path = '~/.config/superfile/theme/spf_matugen.toml'
 
+[templates.nmtui]
+input_path = '~/.config/matugen/templates/nmtui'
+output_path = '~/.config/nmtui/palette'
+
 [templates.custom_css]
 input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.config/matugen/generated/colors.css'
