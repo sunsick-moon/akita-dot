@@ -45,6 +45,7 @@ copy_folders
 chmod +x "$HOME/.config/scripts/lock.sh"
 chmod +x "$HOME/.config/scripts/switch_colors.sh"
 chmod +x "$HOME/.config/scripts/apply_mako.sh"
+chmod +x "$HOME/.config/waybar/getWindows.sh"
 
 sudo gpasswd -a "$USER" realtime
 hyprctl reload
