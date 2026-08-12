@@ -16,6 +16,7 @@
   "modules-right": [
     "custom/scroll-windows-indicator",
     "network",
+    "custom/tuned",
     "battery",
     "tray",
     "custom/power"
@@ -47,7 +48,7 @@
 
   // --- MÓDULOS DERECHA ---
   "custom/scroll-windows-indicator": {
-      "exec": "~/.config/waybar/getWindows.sh",
+      "exec": "~/.config/scripts/getWindows.sh",
       "return-type": "string",
       "format": "{}",
       "interval": 1
@@ -78,5 +79,13 @@
     "format": "",
     "tooltip": false,
     "on-click": "sh -c 'wlogout $WLOGOUT_FLAGS'"
+  },
+  "custom/tuned": {
+      "format": "{}",
+      "exec": "~/.config/scripts/tuned_status.sh",
+      "interval": 3,
+      "on-click": "~/.config/scripts/tuned_toggle.sh",
+      "tooltip": true,
+      "tooltip-format": "Clic para cambiar perfil de TuneD stock"
   }
 }

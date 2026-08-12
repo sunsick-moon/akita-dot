@@ -55,6 +55,7 @@ window#waybar {
 #battery,
 #tray,
 #custom-scroll-windows-indicator,
+#custom-tuned,
 #custom-power {
     background-color: alpha(@on_primary_container, 0.85);
     border: 2px solid alpha(@primary, 0.6);

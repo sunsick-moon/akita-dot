@@ -45,7 +45,13 @@ copy_folders
 chmod +x "$HOME/.config/scripts/lock.sh"
 chmod +x "$HOME/.config/scripts/switch_colors.sh"
 chmod +x "$HOME/.config/scripts/apply_mako.sh"
-chmod +x "$HOME/.config/waybar/getWindows.sh"
+chmod +x "$HOME/.config/scripts/getWindows.sh"
+chmod +x "$HOME/.config/scripts/tuned_status.sh"
+chmod +x "$HOME/.config/scripts/tuned_toggle.sh"
+
 
 sudo gpasswd -a "$USER" realtime
+sudo systemctl mask power-profiles-daemon
+sudo systemctl stop power-profiles-daemon
+sudo systemctl enable --now tuned
 hyprctl reload
