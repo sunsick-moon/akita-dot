@@ -11,6 +11,7 @@ hl.bind(Main .. " + backspace",
     hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(Main .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(Main .. " + P", hl.dsp.window.pseudo())
+hl.bind(Main .. " + SHIFT + S", hl.dsp.exec_cmd("grim -t png -l 0 \"$(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y-%m-%d_%H-%s.png')\""))
 
 -- Scrolling layout controls
 hl.bind(Main .. " + mouse_down", hl.dsp.focus({ direction = "left" }))
@@ -36,8 +37,8 @@ hl.bind(Main .. " + right", hl.dsp.focus({ direction = "right" }))
 
 --###### And the rest or whatever #####--
 -- Example special workspace (scratchpad)
-hl.bind(Main .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(Main .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+-- hl.bind(Main .. " + S", hl.dsp.workspace.toggle_special("magic"))
+-- hl.bind(Main .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 -- hl.bind(Main .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))

@@ -4,12 +4,12 @@ current=$(tuned-adm active | awk '{print $4}')
 
 case "$current" in
     "desktop"|"throughput-performance"|"accelerator-performance")
-        echo "󰓅 $current"  # Icono de cohete / rendimiento
+        echo "󰓅 $current"
         ;;
     "powersave"|"laptop-battery-powersave")
-        echo "󰌪 $current"  # Icono de hoja / ahorro
+        echo "󰌪 $current"
         ;;
     *)
-        echo "󰾆 $current"  # Icono de balanza / equilibrado
+        echo "󰾆 $current"
         ;;
 esac

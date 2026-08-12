@@ -18,7 +18,7 @@ hl.config({
         -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
         allow_tearing    = false,
 
-        layout           = "dwindle",
+        layout           = "scrolling",
     },
 
     decoration = {
@@ -36,9 +36,10 @@ hl.config({
         },
 
         blur             = {
+            new_optimizations = true,
             enabled  = true,
-            size     = 12,
-            passes   = 2,
+            size     = 3,
+            passes   = 3,
             vibrancy = 1,
         },
     },

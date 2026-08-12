@@ -4,6 +4,7 @@ apps.run = "uwsm app -- "
 apps.terminal = apps.run .. "kitty"
 apps.menu = apps.run .. "wofi --show drun"
 apps.files = apps.run .. "dolphin"
+apps.notify = apps.run .. "mako"
 apps.statusbar = apps.run .. "waybar"
 apps.spf = apps.run .. "kitty --class spf -e spf"
 

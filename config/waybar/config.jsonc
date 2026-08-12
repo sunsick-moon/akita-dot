@@ -8,18 +8,18 @@
   "modules-left": [
     "clock",
     "cpu",
-    "memory"
+    "memory",
+    "custom/scroll-windows-indicator"
   ],
   "modules-center": [
     "hyprland/workspaces"
   ],
   "modules-right": [
-    "custom/scroll-windows-indicator",
-    "network",
-    "custom/tuned",
-    "battery",
     "tray",
-    "custom/power"
+    "network",
+    "battery",
+    "custom/tuned",
+    "custom/powermenu"
   ],
 
   // --- MÓDULOS IZQUIERDA ---
@@ -87,5 +87,15 @@
       "on-click": "~/.config/scripts/tuned_toggle.sh",
       "tooltip": true,
       "tooltip-format": "Clic para cambiar perfil de TuneD stock"
+  },
+  "custom/powermenu": {
+      "format": "{}",
+      "return-type": "json",
+      "interval": "once",
+      "exec": "~/.config/scripts/power_toggle.sh",
+      "on-click": "~/.config/scripts/power_toggle.sh exec",
+      "on-scroll-up": "~/.config/scripts/power_toggle.sh prev",
+      "on-scroll-down": "~/.config/scripts/power_toggle.sh next",
+      "signal": 8
   }
 }

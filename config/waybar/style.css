@@ -12,7 +12,6 @@ window#waybar {
     background-color: transparent;
 }
 
-/* --- MÓDULO DE WORKSPACES --- */
 #workspaces {
     background-color: alpha(@on_primary_container, 0.85);
     border: 2px solid alpha(@primary, 0.6);
@@ -22,7 +21,6 @@ window#waybar {
 }
 
 
-/* Limpieza de botones GTK dentro de Workspaces */
 #workspaces button {
     padding: 0px 16px;
     margin:0px 2px;
@@ -34,20 +32,29 @@ window#waybar {
     transition: all 0.2s ease-in-out;
 }
 
-/* Workspace activo */
 #workspaces button.active {
     color: white;
     background-color: alpha(@primary_container, 0.85);
 
 }
 
-/* Hover sobre workspaces */
 #workspaces button:hover {
     background-color: alpha(@primary_container, 0.5);
     color: @foreground;
 }
 
-/* --- MÓDULOS INDIVIDUALES (PÍLDORAS) --- */
+#custom-powermenu{
+    background-color: alpha(@on_primary_container, 0.85);
+    border: 2px solid alpha(@primary, 0.6);
+    color: @primary_container;
+    padding: 0px 5px 0px 14px;
+    border-radius: 50px;
+    margin: 2px 4px;
+    font-size: 19px;
+    font-weight: 900;
+    text-shadow: 0px 0px 0.5px currentColor;
+}
+
 #clock,
 #cpu,
 #memory,
