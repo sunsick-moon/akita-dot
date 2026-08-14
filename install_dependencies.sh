@@ -2,56 +2,57 @@
 set -e
 
 if [[ $EUID -ne 0 ]]; then
-  exec sudo "$0" "$@"
+    exec sudo "$0" "$@"
 fi
 
 paquetes() {
     local pkgs=(
-        ark dolphin hyprpaper waypaper waybar wofi inter-font mako uwsm superfile ttf-jetbrains-mono-nerd libappindicator matugen dos2unix jq tuned grim
+        ark dolphin dos2unix gnome-themes-extra grim
+        hyprpolkitagent hyprpaper inter-font jq kitty
+        libappindicator mako matugen nautilus superfile
+        ttf-jetbrains-mono-nerd tuned uwsm nvim
+        waybar waypaper wofi
+        xdg-desktop-portal-gtk xdg-desktop-portal-hyprland
     )
 
     local failed=()
-    
-        
+
     for pkg in "${pkgs[@]}"; do
-        if  pacman -S --noconfirm --needed "${pkg}"; then
-            echo "Instalación exitosa: $pkg"
+        if pacman -S --noconfirm --needed "$pkg"; then
+            echo "Instalado: $pkg"
         else
-            echo "Falló el paquete $pkg, omitiendo y continuando..."
+            echo "Falló: $pkg"
             failed+=("$pkg")
         fi
     done
-    git clone https://github.com/LazyVim/starter ~/.config/nvim
-    rm -rf ~/.config/nvim/.git
+
+    if [[ ! -d "$HOME/.config/nvim" ]]; then
+        git clone https://github.com/LazyVim/starter "$HOME/.config/nvim"
+        rm -rf "$HOME/.config/nvim/.git"
+    else
+        echo "Aviso: ~/.config/nvim ya existe, se omite el clone de LazyVim."
+    fi
 
     if ((${#failed[@]})); then
         echo
-        echo "Paquetes que fallaron:" 
+        echo "Paquetes que fallaron:"
         printf ' - %s\n' "${failed[@]}"
-    else
-        echo "Todos los paquetes se instalaron correctamente."
+        return 1
     fi
-    
-    ((${#failed[@]})) && return 1 || return 0
 
+    echo "Todos los paquetes se instalaron correctamente."
 }
 
-read -r -p "Preparando instalación... ¿Ejecutar actualización del sistema (1) o instalar directamente (2) (1/2): " r
+read -r -p "¿Actualizar sistema antes de instalar? (s/N): " r
 
-case "$r" in
-  1)
-    echo "Actualizando sistema, luego instalando..."
-     pacman -Syu --noconfirm
-    paquetes
-    ;;
-
-  2|"")
-    echo "Instalando directamente con los paquetes y BD actuales..."
-    paquetes
-
-    ;;
+case "${r,,}" in
+    s|si|sí)
+        echo "Actualizando sistema..."
+        pacman -Syu --noconfirm
+        ;;
     *)
-    echo "Opción inválida"
-    exit 1
-    ;;
+        echo "Instalando sin actualizar..."
+        ;;
 esac
+
+paquetes

@@ -15,6 +15,13 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    match = {
+        class = "^org.gnome.Nautilus$",
+    },
+    tag = "+filemanager",
+})
+
+hl.window_rule({
     match = {  tag = "filemanager", },
     float = true,
     center = true,
@@ -22,10 +29,17 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    match = {  class = "nmtui-popup", },
+    match = {  class = "xdg-desktop-portal-gtk", },
     float = true,
     center = true,
-    size = {"(monitor_w*0.4)", "(monitor_h*0.70)"}
+    size = {"(monitor_w*0.85)", "(monitor_h*0.75)"}
+})
+
+hl.window_rule({
+    match = {  class = "filemanager", },
+    float = true,
+    center = true,
+    size = {"(monitor_w*0.85)", "(monitor_h*0.75)"}
 })
 
 

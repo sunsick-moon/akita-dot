@@ -1,10 +1,10 @@
 #!/bin/bash
-# Make and move dirs
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 copy_folders() {
     local f_names=(
-        fastfetch fish hypr kitty mako matugen scripts superfile waybar waypaper wofi zed
+        fastfetch fish gtk-3.0 gtk-4.0 hypr kitty mako matugen
+        nmtui scripts superfile uwsm waybar waypaper wofi xdg-desktop-portal zed
     )
 
     local failed=()
@@ -14,18 +14,17 @@ copy_folders() {
     for folder in "${f_names[@]}"; do
         if rm -rf "$HOME/.config/$folder" &&
            cp -a "$SCRIPT_DIR/config/$folder" "$HOME/.config/"; then
-            echo "Copiado exitosamente: $folder"
+            echo "Copiado: $folder"
         else
-            echo "Fallo al instalar $folder"
+            echo "Falló: $folder"
             failed+=("$folder")
         fi
     done
 
-    # Optional Wallpaper
     if [[ -f "$SCRIPT_DIR/config/wallpaper.png" ]]; then
         cp -a "$SCRIPT_DIR/config/wallpaper.png" "$HOME/.config/"
     else
-        echo "Aviso: no se encontró config/wallpaper.png, se omite."
+        echo "Aviso: config/wallpaper.png no encontrado, se omite."
     fi
 
     if ((${#failed[@]})); then
@@ -38,19 +37,14 @@ copy_folders() {
     echo "Todas las carpetas se copiaron correctamente."
 }
 
-# Copy folders
 copy_folders
 
-# Config commands
-chmod +x "$HOME/.config/scripts/apply_mako.sh"
-chmod +x "$HOME/.config/scripts/getWindows.sh"
-chmod +x "$HOME/.config/scripts/lock.sh"
-chmod +x "$HOME/.config/scripts/power_toggle.sh"
-chmod +x "$HOME/.config/scripts/switch_colors.sh"
-chmod +x "$HOME/.config/scripts/tuned_status.sh"
-chmod +x "$HOME/.config/scripts/tuned_toggle.sh"
+chmod +x "$HOME/.config/scripts/"*.sh
 
 sudo gpasswd -a "$USER" realtime
+gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+systemctl --user enable --now hyprpolkitagent.service
 sudo systemctl mask power-profiles-daemon
 sudo systemctl stop power-profiles-daemon
 sudo systemctl enable --now tuned
