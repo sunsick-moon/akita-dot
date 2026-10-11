@@ -1,0 +1,8 @@
+# Hyprland-exclusive environment variables (HYPR_* and AQ_* only).
+# Loaded by uwsm only for the Hyprland session, on top of ~/.config/uwsm/env.
+# See: https://wiki.archlinux.org/title/Hyprland#Starting
+
+# If you have more than one GPU, uncomment and list the DRM devices with the
+# one you want Hyprland to render on listed first, to avoid uwsm/systemd
+# picking the wrong one on login:
+# export AQ_DRM_DEVICES="/dev/dri/card1:/dev/dri/card0"

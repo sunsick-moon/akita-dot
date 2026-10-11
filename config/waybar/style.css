@@ -20,10 +20,9 @@ window#waybar {
     margin: 2px 4px;
 }
 
-
 #workspaces button {
     padding: 0px 16px;
-    margin:0px 2px;
+    margin: 0px 2px;
     color: @primary_container;
     background: transparent;
     border-radius: 50px;
@@ -35,15 +34,14 @@ window#waybar {
 #workspaces button.active {
     color: white;
     background-color: alpha(@primary_container, 0.85);
-
 }
 
 #workspaces button:hover {
     background-color: alpha(@primary_container, 0.5);
-    color: @foreground;
+    color: @on_primary_container;
 }
 
-#custom-powermenu{
+#custom-powermenu {
     background-color: alpha(@on_primary_container, 0.85);
     border: 2px solid alpha(@primary, 0.6);
     color: @primary_container;

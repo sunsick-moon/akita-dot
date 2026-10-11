@@ -4,7 +4,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 copy_folders() {
     local f_names=(
         fastfetch fish gtk-3.0 gtk-4.0 hypr kitty mako matugen
-        nmtui scripts superfile uwsm waybar waypaper wofi xdg-desktop-portal zed
+        nmtui scripts superfile uwsm waybar waypaper wofi xdg-desktop-portal
     )
 
     local failed=()
@@ -42,10 +42,21 @@ copy_folders
 chmod +x "$HOME/.config/scripts/"*.sh
 
 sudo gpasswd -a "$USER" realtime
-gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 systemctl --user enable --now hyprpolkitagent.service
 sudo systemctl mask power-profiles-daemon
 sudo systemctl stop power-profiles-daemon
 sudo systemctl enable --now tuned
-hyprctl reload
+
+if command -v fish &>/dev/null && [[ "$SHELL" != *fish ]]; then
+    read -r -p "¿Establecer fish como shell por defecto? (s/N): " r
+    case "${r,,}" in
+        s | si | sí) chsh -s "$(command -v fish)" ;;
+        *) echo "Omitiendo cambio de shell por defecto." ;;
+    esac
+fi
+
+if command -v hyprctl &>/dev/null && pgrep -x Hyprland &>/dev/null; then
+    hyprctl reload
+fi

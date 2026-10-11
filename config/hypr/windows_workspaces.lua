@@ -62,6 +62,17 @@ hl.window_rule({
 
 
 
+-- Community fix: JetBrains IDEs (and several other XWayland/Chromium-based
+-- apps) steal focus back on popups/drags because XWayland windows grab focus
+-- the instant they map. Documented on the Arch Wiki Hyprland page.
+-- See: https://wiki.archlinux.org/title/Hyprland#Jetbrains_apps_focus_issues
+hl.window_rule({
+    name  = "fix-xwayland-steal-focus",
+    match = { xwayland = true },
+
+    no_initial_focus = true,
+})
+
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 

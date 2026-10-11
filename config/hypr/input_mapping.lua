@@ -7,11 +7,18 @@ hl.bind(Main .. " + space", hl.dsp.exec_cmd(App.menu))
 hl.bind(Main .. " + Q", hl.dsp.window.close())
 hl.bind(Main .. " + E", hl.dsp.exec_cmd(App.files))
 hl.bind(Main .. " + K", hl.dsp.exec_cmd(App.spf))
+-- NOTE: This config is started through uwsm, so we must never use hl.dsp.exit()
+-- (or kill Hyprland directly) to shut the session down, as that skips uwsm's
+-- ordered teardown. hyprshutdown already does this correctly; "uwsm stop" is
+-- the safe fallback if hyprshutdown isn't installed.
 hl.bind(Main .. " + backspace",
-    hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+    hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || uwsm stop"))
 hl.bind(Main .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(Main .. " + P", hl.dsp.window.pseudo())
-hl.bind(Main .. " + SHIFT + S", hl.dsp.exec_cmd("grim -t png -l 0 \"$(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y-%m-%d_%H-%s.png')\""))
+hl.bind(Main .. " + SHIFT + S",
+    hl.dsp.exec_cmd("mkdir -p \"$(xdg-user-dir PICTURES)/Screenshots\" && grim -t png -l 0 \"$(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S.png')\""))
+hl.bind(Main .. " + CTRL + SHIFT + S",
+    hl.dsp.exec_cmd("mkdir -p \"$(xdg-user-dir PICTURES)/Screenshots\" && grim -t png -g \"$(slurp)\" \"$(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S.png')\""))
 
 -- Scrolling layout controls
 hl.bind(Main .. " + mouse_down", hl.dsp.focus({ direction = "left" }))

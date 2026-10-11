@@ -1,5 +1,10 @@
 [config]
-set_wallpaper = false
+
+# Wallpaper is applied by ~/.config/scripts/switch_colors.sh (hyprpaper), not
+# by matugen itself, since Hyprland needs hyprctl hot-reload rather than a
+# generic wallpaper-setter command.
+[config.wallpaper]
+set = false
 
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty.conf'
@@ -32,5 +37,8 @@ output_path = '~/.config/nmtui/palette'
 [templates.custom_css]
 input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.config/matugen/generated/colors.css'
-
+# Forces this template to be processed last regardless of declaration order,
+# so the post_hook below only fires once every other template has been
+# (re)generated.
+index = 100
 post_hook = 'hyprctl reload && killall -SIGUSR2 waybar'

@@ -1,6 +1,28 @@
-export GTK_THEME="Adwaita-dark"
+export GTK_THEME="adw-gtk3-dark"
 export QT_QPA_PLATFORMTHEME="qt6ct"
+# Prefer native Wayland for Qt apps but keep an XCB fallback for the ones that
+# still can't cope with pure Wayland.
+export QT_QPA_PLATFORM="wayland;xcb"
 
 export GTK_USE_PORTAL=1
 export XDG_CURRENT_DESKTOP="Hyprland"
 export XDG_SESSION_DESKTOP="Hyprland"
+
+# Cursor defaults. Bump XCURSOR_SIZE (and set a GDK_SCALE/QT_SCALE_FACTOR pair)
+# if you run a scaled HiDPI monitor; see monitors.lua.
+export XCURSOR_SIZE=24
+
+# --- Community fixes for Electron/Chromium apps on Hyprland ---
+# Makes modern Electron builds (Discord, VSCode, Slack, etc.) run under native
+# Wayland instead of blurry/pixelated XWayland. "auto" falls back to XWayland
+# automatically if the app's Electron version doesn't support it well.
+export ELECTRON_OZONE_PLATFORM_HINT="auto"
+# Make sure system Firefox/Thunderbird also use native Wayland.
+export MOZ_ENABLE_WAYLAND=1
+#
+# Some Electron apps (Discord/Vesktop, Spotify) bundle their own Electron and
+# ignore this variable entirely. For those, edit their .desktop file (copy it
+# to ~/.local/share/applications first) or app-specific flags file (e.g.
+# ~/.config/spotify-flags.conf) and add: --ozone-platform-hint=auto
+# For plain Chromium/google-chrome, create ~/.config/chromium-flags.conf (or
+# ~/.config/chrome-flags.conf) with the same flag.

@@ -6,6 +6,7 @@ apps.menu = apps.run .. "wofi --show drun"
 apps.files = apps.run .. "nautilus"
 apps.notify = apps.run .. "mako"
 apps.statusbar = apps.run .. "waybar"
+apps.idle = apps.run .. "hypridle"
 apps.spf = apps.run .. "kitty --class spf -e spf"
 
 return apps
