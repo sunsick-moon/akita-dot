@@ -1,10 +1,15 @@
 [config]
-
 # Wallpaper is applied by ~/.config/scripts/switch_colors.sh (hyprpaper), not
 # by matugen itself, since Hyprland needs hyprctl hot-reload rather than a
 # generic wallpaper-setter command.
-[config.wallpaper]
-set = false
+#
+# IMPORTANT: do NOT add a [config.wallpaper] section here unless you also set
+# a `command` under it. In current matugen, `command` is a required (non
+# optional) field of that table: if the table is present without `command`,
+# matugen fails to parse this whole file ("missing field `command`") and
+# silently aborts before generating any templates, since switch_colors.sh
+# calls matugen with `|| true`. Leaving [config.wallpaper] out entirely is
+# how you tell matugen to skip wallpaper-setting without errors.
 
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty.conf'

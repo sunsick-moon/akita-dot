@@ -14,7 +14,15 @@ echo "=== Inicio de actualización: $(date) ===" > "$LOG_FILE"
 
 # 2. Generar esquemas de colores con Matugen
 echo "Ejecutando Matugen..." >> "$LOG_FILE"
-matugen image "$WALLPAPER_PATH" --prefer=saturation >> "$LOG_FILE" 2>&1 || true
+if ! matugen image "$WALLPAPER_PATH" --prefer=saturation >> "$LOG_FILE" 2>&1; then
+    echo "[ERROR] Matugen falló generando los templates. Revisa $LOG_FILE" | tee -a "$LOG_FILE" >&2
+    # No seguimos silenciando el error: avisamos aunque sea por notificación,
+    # ya que si matugen falla no se regeneran colores para kitty/mako/waybar/etc.
+    # (una causa común: un [config.wallpaper] en config.toml sin su campo
+    # `command`, que es obligatorio para matugen y hace fallar TODO el parseo
+    # del config, no solo el wallpaper).
+    command -v notify-send &>/dev/null && notify-send -u critical "Matugen" "Falló al generar los colores. Revisa $LOG_FILE"
+fi
 
 # 3. Guardar configuración persistente (SIEMPRE antes de iniciar o recargar hyprpaper)
 HYPRPAPER_CONF="$HOME/.config/hypr/hyprpaper.conf"
